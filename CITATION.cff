@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+title: oct-dnn-lambda-handler
+type: software
+authors:
+  - given-names: Alexander
+    family-names: Rose
+repository-code: 'https://github.com/rosealexander/ocv-dnn-lambda-handler'
+license: MIT

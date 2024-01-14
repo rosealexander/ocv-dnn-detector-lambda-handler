@@ -48,7 +48,7 @@ def inner(_it, _timer{init}):
 # Read environment variables
 MODEL = os.getenv('MODEL', None)
 CONFIG = os.getenv('CONFIG', None)
-PATH = os.environ.get('PATH')
+LAMBDA_TASK_ROOT = os.environ.get('LAMBDA_TASK_ROOT')
 CLASSES = os.getenv('CLASSES', None)
 FORWARD_PASS = os.getenv('FORWARD_PASS', '').lower() == 'true'
 SILENT_RUN = os.getenv('SILENT_RUN', '').lower() == 'true'
@@ -87,7 +87,7 @@ if MODEL is None or CONFIG is None:
     """
     model_pattern = r"\.(caffemodel|pb|t7|net|weights|bin|onnx)$"
     config_pattern = r"\.(prototxt|pbtxt|cfg|xml)$"
-    files = [file for file in glob.glob(f"{PATH}/**/*", recursive=True)]
+    files = [file for file in glob.glob(f"{LAMBDA_TASK_ROOT}/**/*", recursive=True)]
     config_files = [file for file in files if re.search(config_pattern, file)]
     model_files = [file for file in files if re.search(model_pattern, file)]
     MODEL = MODEL or next((c for c in model_files), None)
